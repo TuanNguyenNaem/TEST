@@ -19,6 +19,7 @@ namespace TEST
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             Application.Run(new formMain());

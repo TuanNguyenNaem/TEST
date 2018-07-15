@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Helpers;
 
 namespace TEST
 {
@@ -90,10 +91,17 @@ namespace TEST
         {
             XtraMessageBox.Show("Đăng nhập để thêm mới hóa đơn", "Thông báo");
         }
+        private void LoadInfoUser()
+        {
+            if (Sessions.UserName != "")
+                tabinfo.Text = "Xin chào: " + Sessions.UserName + " (" + Sessions.Role + ")";
+            else
+                tabinfo.Text = "";
+        }
 
         private void formMain_Load(object sender, EventArgs e)
         {
-
+            LoadInfoUser();
         }
 
         private void btnDsKhachHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
