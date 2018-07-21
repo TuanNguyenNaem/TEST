@@ -9,6 +9,9 @@ namespace Models
     [Table("TKNHANVIEN")]
     public partial class TKNHANVIEN
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int STT { get; set; }
+
         [Key]
         [Column(Order = 0)]
         [StringLength(10)]
@@ -26,6 +29,10 @@ namespace Models
         [Required]
         [StringLength(30)]
         public string Email { get; set; }
+
+        [Required]
+        [StringLength(30)]
+        public string Role { get; set; }
 
         public virtual NHANVIEN NHANVIEN { get; set; }
     }

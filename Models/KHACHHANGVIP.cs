@@ -9,6 +9,9 @@ namespace Models
     [Table("KHACHHANGVIP")]
     public partial class KHACHHANGVIP
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int STT { get; set; }
+
         [Key]
         [Column(Order = 0)]
         [StringLength(10)]

@@ -15,6 +15,9 @@ namespace Models
             CTHOADONs = new HashSet<CTHOADON>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int STT { get; set; }
+
         [Key]
         [StringLength(10)]
         public string MaHH { get; set; }

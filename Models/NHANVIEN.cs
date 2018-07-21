@@ -16,6 +16,9 @@ namespace Models
             TKNHANVIENs = new HashSet<TKNHANVIEN>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int STT { get; set; }
+
         [Key]
         [StringLength(10)]
         public string MaNV { get; set; }

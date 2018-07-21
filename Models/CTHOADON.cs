@@ -9,6 +9,9 @@ namespace Models
     [Table("CTHOADON")]
     public partial class CTHOADON
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int STT { get; set; }
+
         [Key]
         [Column(Order = 0)]
         [StringLength(10)]
