@@ -188,6 +188,7 @@
             this.gridControl1.TabIndex = 16;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
             // gridView1
             // 
@@ -287,6 +288,7 @@
             this.btXoa.StyleController = this.layoutControl1;
             this.btXoa.TabIndex = 14;
             this.btXoa.Text = "Xóa";
+            this.btXoa.Click += new System.EventHandler(this.btXoa_Click);
             // 
             // btthem
             // 
@@ -308,6 +310,7 @@
             this.btSua.StyleController = this.layoutControl1;
             this.btSua.TabIndex = 12;
             this.btSua.Text = "Sửa";
+            this.btSua.Click += new System.EventHandler(this.btSua_Click);
             // 
             // btLuu
             // 

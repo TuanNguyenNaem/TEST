@@ -17,7 +17,7 @@ namespace QLBH
     {
         QuanLyBanHang_DbContext context;
         CustomerRepository customer;
-        private bool create = true;
+        private bool create = false;
         public formKhachHang()
         {
             context = new QuanLyBanHang_DbContext();
@@ -76,7 +76,7 @@ namespace QLBH
 
         private void btthem_Click(object sender, EventArgs e)
         {
-            
+            Reset();
             textMaKH.Text = this.customer.TaoMaKhachHang();
             MoDieuKhien();
             create = true;
@@ -115,6 +115,7 @@ namespace QLBH
                             gridControl1.DataSource = this.customer.GetAll();
                             Reset();
                             KhoaDieuKhien();
+                            create = false;
                         }
                         else
                             XtraMessageBox.Show("Thêm mới thất bại!", "Thông báo");
@@ -128,6 +129,96 @@ namespace QLBH
             else
             {
                 //Đang sửa
+                //Đang thêm mới
+                if (txtHoten.Text == "" || dateNgaySinh.Text == "")
+                    XtraMessageBox.Show("Chưa nhập đủ thông tin!", "Thông báo");
+                else
+                {
+                    try
+                    {
+                        var customer = new KHACHHANG()
+                        {
+                            MaKH = textMaKH.Text,
+                            TenKH = txtHoten.Text,
+                            GioiTinh = cbGioiTinh.Text,
+                            NgaySinh = DateTime.Parse(dateNgaySinh.Text),
+                            SDT = txtsdt.Text,
+                            DiaChi = txtDiaChi.Text,
+                            Email = txtEmail.Text
+                        };
+                        var result = this.customer.Update(customer);
+                        if (result)
+                        {
+                            XtraMessageBox.Show("Sửa thông tin khách hàng "+ txtHoten.Text + " thành công!", "Thông báo");
+                            gridControl1.DataSource = this.customer.GetAll();
+                            Reset();
+                            KhoaDieuKhien();
+                            create = false;
+                        }
+                        else
+                            XtraMessageBox.Show("Thêm mới thất bại!", "Thông báo");
+                    }
+                    catch
+                    {
+                        XtraMessageBox.Show("Vui lòng thử lại!", "Thông báo");
+                    }
+                }
+            }
+        }
+
+        private void btSua_Click(object sender, EventArgs e)
+        {
+            if (textMaKH.Text == "")
+                XtraMessageBox.Show("Chưa chọn bản ghi cần sửa!", "Thông báo");
+            else
+            {
+                MoDieuKhien();
+                create = false;
+            }
+        }
+
+        private void gridControl1_Click(object sender, EventArgs e)
+        {
+            if (!create)
+            {
+                int row = gridView1.FocusedRowHandle;
+                textMaKH.Text = gridView1.GetRowCellValue(row, gridView1.Columns[0]).ToString();
+                txtHoten.Text = gridView1.GetRowCellValue(row, gridView1.Columns[1]).ToString();
+                cbGioiTinh.Text = gridView1.GetRowCellValue(row, gridView1.Columns[2]).ToString();
+                dateNgaySinh.Text = gridView1.GetRowCellValue(row, gridView1.Columns[3]).ToString();
+                txtsdt.Text = gridView1.GetRowCellValue(row, gridView1.Columns[4]).ToString();
+                txtDiaChi.Text = gridView1.GetRowCellValue(row, gridView1.Columns[5]).ToString();
+                txtEmail.Text = gridView1.GetRowCellValue(row, gridView1.Columns[6]).ToString();
+            }
+        }
+
+        private void btXoa_Click(object sender, EventArgs e)
+        {
+            if (textMaKH.Text == "")
+                XtraMessageBox.Show("Chưa chọn bản ghi cần xóa!", "Thông báo");
+            else
+            {
+                if(XtraMessageBox.Show("Bạn có muốn xóa khách hàng " + txtHoten.Text + " không?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        var result = customer.Delete(textMaKH.Text);
+                        if (result)
+                        {
+                            XtraMessageBox.Show("Xóa thành công!", "Thông báo");
+                            gridControl1.DataSource = this.customer.GetAll();
+                            Reset();
+                            KhoaDieuKhien();
+                            create = false;
+                        }
+                        else
+                            XtraMessageBox.Show("Xóa thất bại!", "Thông báo");
+                    }
+                    catch
+                    {
+                        XtraMessageBox.Show("Vui lòng thử lại!", "Thông báo");
+                    }
+                }
             }
         }
     }
