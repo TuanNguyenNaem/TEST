@@ -25,17 +25,23 @@ namespace QLBH
             textMaKH.Enabled = false;
             cbGioiTinh.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
         }
-        private void LoadDataCustomer()
-        {
-            gridControl1.DataSource = context.KHACHHANGs.ToList();
-        }
+        //private void LoadDataCustomer()
+        //{
+        //    gridControl1.DataSource = context.KHACHHANGs.ToList();
+        //}
 
         private void formKhachHang_Load(object sender, EventArgs e)
         {
             KhoaDieuKhien();
-            LoadDataCustomer();
+            //LoadDataCustomer();
         }
-        private void cbGioiTinh_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void btthem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void formKhachHang_Load_1(object sender, EventArgs e)
         {
 
         }

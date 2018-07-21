@@ -43,7 +43,7 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.btthem = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
@@ -143,7 +143,7 @@
             this.layoutControl1.Controls.Add(this.gridControl1);
             this.layoutControl1.Controls.Add(this.label1);
             this.layoutControl1.Controls.Add(this.simpleButton4);
-            this.layoutControl1.Controls.Add(this.simpleButton3);
+            this.layoutControl1.Controls.Add(this.btthem);
             this.layoutControl1.Controls.Add(this.simpleButton2);
             this.layoutControl1.Controls.Add(this.simpleButton1);
             this.layoutControl1.Controls.Add(this.textEdit5);
@@ -288,15 +288,16 @@
             this.simpleButton4.TabIndex = 14;
             this.simpleButton4.Text = "Xóa";
             // 
-            // simpleButton3
+            // btthem
             // 
-            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(87, 336);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(76, 22);
-            this.simpleButton3.StyleController = this.layoutControl1;
-            this.simpleButton3.TabIndex = 13;
-            this.simpleButton3.Text = "Thêm";
+            this.btthem.Image = ((System.Drawing.Image)(resources.GetObject("btthem.Image")));
+            this.btthem.Location = new System.Drawing.Point(87, 336);
+            this.btthem.Name = "btthem";
+            this.btthem.Size = new System.Drawing.Size(76, 22);
+            this.btthem.StyleController = this.layoutControl1;
+            this.btthem.TabIndex = 13;
+            this.btthem.Text = "Thêm";
+            this.btthem.Click += new System.EventHandler(this.btthem_Click);
             // 
             // simpleButton2
             // 
@@ -367,7 +368,6 @@
             this.cbGioiTinh.Size = new System.Drawing.Size(75, 20);
             this.cbGioiTinh.StyleController = this.layoutControl1;
             this.cbGioiTinh.TabIndex = 6;
-            this.cbGioiTinh.SelectedIndexChanged += new System.EventHandler(this.cbGioiTinh_SelectedIndexChanged);
             // 
             // textEdit2
             // 
@@ -558,7 +558,7 @@
             // 
             // layoutControlItem10
             // 
-            this.layoutControlItem10.Control = this.simpleButton3;
+            this.layoutControlItem10.Control = this.btthem;
             this.layoutControlItem10.Location = new System.Drawing.Point(75, 324);
             this.layoutControlItem10.Name = "layoutControlItem10";
             this.layoutControlItem10.Size = new System.Drawing.Size(80, 26);
@@ -761,7 +761,7 @@
             this.Name = "formKhachHang";
             this.Text = "Khách hàng";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.formKhachHang_Load);
+            this.Load += new System.EventHandler(this.formKhachHang_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
@@ -818,7 +818,7 @@
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraEditors.SimpleButton simpleButton4;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton btthem;
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.TextEdit textEdit5;
