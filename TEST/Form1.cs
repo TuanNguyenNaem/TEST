@@ -22,7 +22,7 @@ namespace TEST
         {
             foreach (var f in this.MdiChildren)
             {
-                if(f.GetType() == T)
+                if (f.GetType() == T)
                 {
                     return f;
                 }
@@ -93,15 +93,15 @@ namespace TEST
         }
         private void LoadInfoUser()
         {
-            if (Sessions.UserName != "")
-                tabinfo.Text = "Xin chào: " + Sessions.UserName + " (" + Sessions.Role + ")";
-            else
-                tabinfo.Text = "";
+            tabinfo.Text = "Xin chào: " + Sessions.UserName + " (" + Sessions.Role + ")";
         }
 
         private void formMain_Load(object sender, EventArgs e)
         {
-            LoadInfoUser();
+            if (Sessions.UserName == "" || Sessions.UserName == null)
+                tabinfo.Text = string.Empty;
+            else
+                LoadInfoUser();
         }
 
         private void btnDsKhachHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -216,7 +216,15 @@ namespace TEST
 
         private void btnDangXuat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            XtraMessageBox.Show("Bạn có chắc chắn muốn Đăng xuất", "Thông báo");
+            if (XtraMessageBox.Show("Bạn có chắc chắn muốn Đăng xuất", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Sessions.UserName = "";
+                Sessions.Role = "";
+                Sessions.MaNV = "";
+                formMain form = new formMain();
+                this.Hide();
+                form.Show();
+            }
         }
 
         private void btnTKHangTrongKho_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
